@@ -1,0 +1,82 @@
+{
+  "homeIndex":{ /*(id)*/
+   "current":{
+     "id": 1000,
+     "name": "海贼王",
+     "keyWords": [
+       "热血",
+       "冒险"
+     ],
+     "allEpisodeCount": 987, //一共有多少级
+     "homeUrl": "www.commit.com" ,//首页的url
+     "list": [
+       {
+         "name": "第二话 ",
+         "episode": 1,
+         "url": "www.rrxxxxw.com",
+         "pages":20
+       },
+       {
+         "name": "第一话",
+         "episode": 2,
+         "url": "www.rrxxxxw.com",
+         "arr":[],
+         "pages":20
+       }
+     ]
+   },
+},  //获取主页current
+   "getComicContent":{/*(id, 加密url)*/
+       "current":{
+         "id": 1000,
+         "name": "海贼王",
+         "keyWords": [
+           "热血",
+           "冒险"
+         ],
+         "allEpisodeCount": 987, //一共有多少级
+         "homeUrl": "www.commit.com",  //首页的url
+         "list": [
+           {
+             "name": "第二话 ",
+             "episode": 1,
+             "url": "www.rrxxxxw.com",
+             "pages":20
+           },
+           {
+             "name": "第一话",
+             "episode": 2,
+             "url": "www.rrxxxxw.com",
+             "arr":[],
+             "pages":20
+           }
+         ]
+       },
+      "imagesUrlArray":["1.jpg","3.jpg"],
+      "imagesLength":20,
+      "previousUrl":"1.html",
+      "nextUrl":"3.html"
+   }
+
+
+}//index
+
+//每个人可以自定义接口
+//通过id得到current . 加密所有url然后发送给前端
+//后台计算json 返回给前端 这样就可以加密和解密了
+
+//created(每个页面进来的时候路由跳转)
+//loading图 (固定页面使用)
+//app里面做拦截
+
+//扩展性
+
+//数据库mongoose
+
+// vuex
+//1.漫画应用
+//2.多个漫画在线聊天室
+//3.贴吧功能 (数据库) = > 发图片表情 发完后刷新  = >
+//4.好友(搜索好友昵称,手机号)(删除好友,修改备注名,vip红名功能)
+//5.个人设置(注册页面,数据库)
+
