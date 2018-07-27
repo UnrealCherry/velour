@@ -1,12 +1,12 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import { Button } from 'element-ui'
-import 'lib-flexible/flexible.js'
-Vue.config.productionTip = false
-Vue.use(Button);
+import 'lib-flexible'
+import 'element-ui/lib/theme-chalk/index.css'
+import router from './router'
+import '@/assets/reset.css'
+Vue.use(Button)
+Vue.config.productionTip = false;
 (function (doc, win) {
   let docEl = doc.documentElement,
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -19,11 +19,9 @@ Vue.use(Button);
   if (!doc.addEventListener) return
   win.addEventListener(resizeEvt, recalc, false)
 })(document, window)
-
-let app = new Vue({
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
-console.log(app, 'app')

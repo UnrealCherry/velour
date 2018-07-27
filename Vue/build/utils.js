@@ -3,7 +3,7 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
-
+const GolbalOptions =require('../_globalOptions')
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
@@ -31,7 +31,7 @@ exports.cssLoaders = function (options) {
   const px2remLoader = {
     loader: 'px2rem-loader',
     options: {
-      remUnit: 64//设计稿宽度/10
+      remUnit: GolbalOptions.DesignsWidth//设计稿宽度/10
     }
   };
   // generate loader string to be used with extract text plugin

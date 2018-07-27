@@ -11,3 +11,8 @@
 * 6.要爬取的第一个网站为动漫之家,增加mock写法,之后扩展的漫画地址网站必须根据这些参数定义路由
 * 7.使用mongdb数据库,增加mongodb配置,使用async写法,先启动数据库再启动服务.
 * 8.新增global.mongodb.schema[CollectionName][methods]可使用mongodb多种方法(global.mongodb.schema为mongodb原型固定有_list和length值)
+### 版本0.0.2
+* 1.修复了一些细微bug
+* 2.增加了配置设计稿宽度的全局引用变量
+* 3.初步框架已搭建完毕
+
