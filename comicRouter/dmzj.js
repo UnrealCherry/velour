@@ -24,7 +24,7 @@ let pulessrityGlobalMethods =global[global.ourkeys.pulessrity]  //pulessrity的�
 //路由必须写在 pulessrityGlobalMethods.routerInThere 这个函数里
 let routerArray=pulessrityGlobalMethods.routerInThere(function Router_Writing_ThisFunction() {
   router.get('/a',(req,res)=>{
-    res.send(methods.getImagesArr('chaowuliyongzhejinba'))
+res.send('a')
   })
 })
 let getAllRouterName =(pulessrityGlobalMethods.getAllRouterName( routerArray ))

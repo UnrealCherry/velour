@@ -1,13 +1,15 @@
+import '@/assets/reset.css'
+import '@/assets/swiper.css'
+import 'element-ui/lib/theme-chalk/index.css'
 import Vue from 'vue'
 import App from './App'
 import { Button } from 'element-ui'
-import 'lib-flexible'
-import 'element-ui/lib/theme-chalk/index.css'
+//自定义lib-flexible
+import '@/assets/lib-flexible'
 import router from './router'
-import '@/assets/reset.css'
 Vue.use(Button)
-Vue.config.productionTip = false;
-(function (doc, win) {
+Vue.config.productionTip = false
+/*(function (doc, win) {
   let docEl = doc.documentElement,
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
     recalc = function () {
@@ -18,8 +20,8 @@ Vue.config.productionTip = false;
   recalc()
   if (!doc.addEventListener) return
   win.addEventListener(resizeEvt, recalc, false)
-})(document, window)
-/* eslint-disable no-new */
+})(document, window)*/
+
 new Vue({
   el: '#app',
   router,

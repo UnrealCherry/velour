@@ -31,7 +31,7 @@ exports.cssLoaders = function (options) {
   const px2remLoader = {
     loader: 'px2rem-loader',
     options: {
-      remUnit: GolbalOptions.DesignsWidth//设计稿宽度/10
+      remUnit: GolbalOptions.DesignsWidth/10//设计稿宽度/10
     }
   };
   // generate loader string to be used with extract text plugin

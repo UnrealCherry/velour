@@ -47,9 +47,11 @@ textarea {
   margin: 0;
 }
 
-html {
+html body{
   box-sizing: border-box;
   font-family:  "Microsoft YaHei" ;
+  overflow-x:hidden;
+  height: 100%;
 }
 
 * {

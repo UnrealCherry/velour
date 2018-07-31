@@ -18,6 +18,5 @@ export default {
   -moz-font-feature-settings: 'liga', 'kern';
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
