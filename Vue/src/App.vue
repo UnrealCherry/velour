@@ -1,12 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <SwitchBar></SwitchBar><!--底部tab-->
   </div>
 </template>
 
 <script>
+import SwitchBar from '@/reuse-components/SwitchBar'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    SwitchBar
+  }
 }
 </script>
 

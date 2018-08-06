@@ -1,0 +1,25 @@
+$icon-address:'~@/assets/svgIcons/';
+$icon-list :'read', 'solution', 'table', 'tablet','team','user';
+@mixin  setIcon($element-name,$width) {
+   .icon-#{$element-name} {
+     width: $width;
+     height: $width;
+     background: url(($icon-address)+($element-name)+'.svg') no-repeat center center;
+     background-size: 100%;
+     flex: 1;
+   }
+}
+@mixin cement($gray-level){
+  @if  $gray-level== 3{ & {  background: #a7a7a7;  } }
+  @if  $gray-level== 2{ & {  background: rgba(123, 123, 123, 0.63);  } }
+  @if  $gray-level== 1{ & {  background: rgba(0, 0, 0, 0.77);  } }
+}  //切图专用混凝土
+@each $name in $icon-list {
+  　body {
+    @include  setIcon($name,50px)
+  }
+}  //空格太多报错什么鬼
+
+
+
+
