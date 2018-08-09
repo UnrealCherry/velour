@@ -1,5 +1,5 @@
 <template>
-    <div id="Book">adasdasdad</div>
+    <div id="Book">书架</div>
 </template>
 <script>
 export default {}

@@ -3,7 +3,12 @@
     <div class="swiper-wrapper">
   <simpleSwiper :swiper_images="swiper_images"></simpleSwiper>
     </div>
-      <div class="icon-list-wrapper"></div>
+      <div class="icon-list-wrapper">
+        <div class="icon-single" v-for="iconCat in 4" :key="iconCat">
+          <div class="icon-pack"></div>
+          <div class="icon-content">{{iconCat}}</div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -51,7 +56,31 @@ export default {
   .icon-list-wrapper{
     width: 750px;
     height: 150px;
-    @include  cement(1)
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    @include  cement(1);
+    .icon-single{
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      @include  cement(2);
+      .icon-pack{
+        width:80px;
+        height: 80px;
+        margin-bottom:5px;
+        @include  cement(3);
+      }
+      .icon-content{
+        width:100%;
+        text-align: center;
+        @include  cement(5);
+      }
+    }
   }
 }
 </style>
