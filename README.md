@@ -26,3 +26,8 @@
 * 3.引入axios,fastclick.better-scroll
 * 5.增加了下导航项目正式开始写逻辑
 * 6.增加vuex正式设计全局路由
+### 版本0.0.6
+* 0.增加全局属性 'webSidePath',这样就可以直接指定网站路径,方便引用资源啦
+* 1.去除'open-browser-webpack-plugin'
+* 2.增加vuex以及设定本地缓存的参数
+* 3.增加tabnav特效,修复多数细节,让项目更组件化

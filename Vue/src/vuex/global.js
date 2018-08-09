@@ -1,12 +1,20 @@
 const vuexGlobal = {
   namespaced: true,
   state: {
-    count: 0
+    vuex_localStorage: 'localStorage'
   },
   mutations: {
-    increment (state) {
-      state.count++
+    setLocalStorage (state, obj) { //设置本地缓存
+      for (let _key in obj) {
+        localStorage[_key] = obj[_key]
+      }
+      state.vuex_localStorage = {...localStorage, ...obj}
+      console.log(state.vuex_localStorage)
+      return state.vuex_localStorage
     }
+  },
+  getters: {
+
   },
   strict: process.env.NODE_ENV !== 'production'
 }

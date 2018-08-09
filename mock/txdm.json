@@ -24,7 +24,7 @@
          "pages":20
        }
      ]
-   },
+   }
 },  //获取主页current
    "getComicContent":{/*(id, 加密url)*/
        "current":{
