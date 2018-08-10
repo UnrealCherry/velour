@@ -10,6 +10,11 @@ $randomColorlNum:1,2,3,4,5,6,7,8,9,0;  //随机颜色等级
      flex: 1;
    }
 }
+@each $name in $icon-list {
+  　body {
+    @include  setIcon($name,50px)
+  }
+}  //遍历所用icon
 @function randomColor(){
   $r :floor(random()*256);
   $g: floor(random()*256);
@@ -22,12 +27,16 @@ $randomColorlNum:1,2,3,4,5,6,7,8,9,0;  //随机颜色等级
     @if  $gray-level== $num{ & {  background: randomColor();border: 1px black solid; box-sizing: border-box;  } }
   }
 }  //切图专用混凝土
-@each $name in $icon-list {
-  　body {
-    @include  setIcon($name,50px)
+@mixin textEllipsis($line){
+  &{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:$line;
   }
-}  //空格太多报错什么鬼
 
+} //超过line行就隐藏
 
 
 

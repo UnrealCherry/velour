@@ -33,3 +33,8 @@
 * 3.增加tabnav特效,修复多数细节,让项目更组件化
 * 4.增加sass随机颜色函数
 * 5.将切图水泥增加10个等级
+### 版本0.0.7
+* 0.增加全局sass(textEllipsis).方便写文本省略号
+* 1.增加vuex设置state函数
+* 2.增加book-wrapper复用组件
+* 3.设置全局router-view视图,搭配better-scroll

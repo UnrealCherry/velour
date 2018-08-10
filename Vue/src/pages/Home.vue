@@ -3,22 +3,31 @@
     <div class="swiper-wrapper">
   <simpleSwiper :swiper_images="swiper_images"></simpleSwiper>
     </div>
+    <!--wrapper end-->
       <div class="icon-list-wrapper">
-        <div class="icon-single" v-for="iconCat in 4" :key="iconCat">
+        <div class="icon-single" v-for="(iconCat, index) in news" :key="iconCat+index" @click="goToRouter(iconCat.url)">
           <div class="icon-pack"></div>
-          <div class="icon-content">{{iconCat}}</div>
+          <div class="icon-content">{{iconCat.name}}</div>
         </div>
       </div>
+    <!--rank end-->
+    <books></books>
   </div>
 </template>
 
 <script>
 import Swiper from 'swiper'
 import simpleSwiper from '@/reuse-components/simple-swiper'
+import books from '@/reuse-components/book-wrapper'
 export default {
+  components: {
+    simpleSwiper,
+    books
+  },
   data () {
     return {
       swiperInstance: null,
+      news: [{name: '最近更新', url: '/water'}, {name: '精品推荐', url: '/water'}, {name: '排行榜', url: '/water'}, {name: '土豪榜', url: '/water'}],
       swiper_images: [{
         name: 'bleach',
         url: require('@/assets/animeWallpaper/timg (4).jpg')
@@ -46,8 +55,10 @@ export default {
       })
     })
   },
-  components: {
-    simpleSwiper
+  methods: {
+    goToRouter (url) {
+      this.$router.push(url)
+    }
   }
 }
 </script>
@@ -73,6 +84,8 @@ export default {
         width:80px;
         height: 80px;
         margin-bottom:5px;
+        border-radius: 50%;
+        overflow: hidden;
         @include  cement(3);
       }
       .icon-content{

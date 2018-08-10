@@ -8,7 +8,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: GolbalOptions.webSidePath,
+    assetsPublicPath: '/',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -49,7 +49,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: GolbalOptions.webSidePath,
 
     /**
      * Source Maps
