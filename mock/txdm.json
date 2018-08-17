@@ -7,21 +7,21 @@
        "热血",
        "冒险"
      ],
-     "allEpisodeCount": 987, //一共有多少级
+     "allEpisodeCount": 2, //一共有多少级
      "homeUrl": "www.commit.com" ,//首页的url
      "list": [
        {
          "name": "第二话 ",
          "episode": 1,
          "url": "www.rrxxxxw.com",
-         "pages":20
+         "pages":3
        },
        {
          "name": "第一话",
          "episode": 2,
          "url": "www.rrxxxxw.com",
-         "arr":[],
-         "pages":20
+         "arr":["https://manhua.qpic.cn/manhua_detail/0/15_15_57_15eee3c6307a9997ce00eb755dac9719_3149.jpg/0","https://manhua.qpic.cn/manhua_detail/0/15_15_57_99eea8f31e71c673a4e7a067384bf60e_3150.jpg/0","https://manhua.qpic.cn/manhua_detail/0/15_15_57_34de391a2a3107d3fd80f11df61b3959_704.jpg/0"],
+         "pages":3
        }
      ]
    }

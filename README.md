@@ -1,4 +1,4 @@
-# Velour
+# Velour(战胜腾讯动漫让大家一起看免费漫画的夙愿正在进行中...)
 ![](https://github.com/pulessrity/velour/blob/master/assets/logo.jpg?raw=true)
 ## 更新日志
 ### 版本0.0.1 (项目必须安装[mongodb4.0](https://www.mongodb.com/download-center?jmp=nav#community)能跑起来,推荐[Robo3T](https://robomongo.org/)可视化mongodb应用)
@@ -38,3 +38,8 @@
 * 1.增加vuex设置state函数
 * 2.增加book-wrapper复用组件
 * 3.设置全局router-view视图,搭配better-scroll
+### 版本0.0.8
+* 0.增加search.vue(最近好忙)
+* 1.增加scoket.io(具体逻辑还没想到)
+* 2.优化全局sass函数
+* 3.关键的战胜腾讯动漫让大家一起看免费漫画的夙愿正在进行中...

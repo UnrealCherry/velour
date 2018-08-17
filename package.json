@@ -16,7 +16,9 @@
     "mongoose": "^5.2.5",
     "superagent": "^3.8.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "socket.io": "^2.1.1"
+  },
   "scripts": {
     "test": "node app"
   },

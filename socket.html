@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.slim.dev.js"></script>
+<script>
+    var socket = io.connect('http://localhost:60000');
+    socket .on('connection', function(socket){
+        console.log('con')
+        socket.on('chat message', function(msg){
+            io.emit('chat message', msg);
+        });
+    });
+
+</script>
+</html>

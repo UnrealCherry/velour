@@ -1,5 +1,5 @@
 <template>
-    <div>找不到这个页面</div>
+    <div>找不到{{$route.fullPath}}这个页面</div>
 </template>
 <script>
 export default {}

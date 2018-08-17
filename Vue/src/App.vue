@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="flow-wrap" :style="{'height':viewHeight+'px'}">
+      <transition name="fade">
     <router-view/>
+      </transition>
     </div>
     <comic-navbar :icons_data="icons_data" :color_group="color_group" ></comic-navbar><!--底部tab-->
   </div>
@@ -38,7 +40,7 @@ export default {
       BScroll: 'better-scroll',
       color_group: ['#F9B3C9', '#EF8AAE', '#E20380', '#AF007B', '#6E097D', '#EB9D00', '#E95722', '#DB0129', '#019F61', '#02B1AF', '#4A1377'],
       icons_data: [ {name: '首页',
-        url: '/',
+        url: '/home',
         svgName: 'icon-shouye'
       }, {name: '书架',
         url: '/book',
@@ -59,11 +61,13 @@ export default {
   methods: {
     betterScrollGolbalInit () {
       this.BScroll = null
-      this.BScroll = new BScroll('#flow-wrap')
+      this.BScroll = new BScroll('#flow-wrap', {
+        click: false
+      })
     }, //全局安装better-scroll
     init () {
       let navbar = document.getElementById('ComicNavbar').offsetHeight
-      let client = document.body.scrollHeight
+      let client = document.documentElement.clientHeight
       this.$store.commit('setValue', {key: 'viewHeight', val: client - navbar})
     }
   },
@@ -75,6 +79,13 @@ export default {
 
 <style lang="less" scoped>
 #app {
+  .fade-enter-active, .fade-leave-active {
+    transition:  0.35s ;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform:translateX(-100vw) ;
+    opacity: 0;
+  }
   #flow-wrap{
     overflow: hidden;
   }

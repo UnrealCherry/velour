@@ -1,6 +1,7 @@
 $icon-address:'~@/assets/svgIcons/';
 $icon-list :'read', 'solution', 'table', 'tablet','team','user';
-$randomColorlNum:1,2,3,4,5,6,7,8,9,0;  //随机颜色等级
+$randomColorlLevel:100;  //随机颜色等级
+$fontSizeLevel:50; //font-size 等级
 @mixin  setIcon($element-name,$width) {
    .icon-#{$element-name} {
      width: $width;
@@ -23,7 +24,7 @@ $randomColorlNum:1,2,3,4,5,6,7,8,9,0;  //随机颜色等级
   @return rgba($r,$g,$b,$o)
 };  //随机颜色函数
 @mixin cement($gray-level){
-  @each $num in $randomColorlNum{
+  @for $num from 1 through $randomColorlLevel{
     @if  $gray-level== $num{ & {  background: randomColor();border: 1px black solid; box-sizing: border-box;  } }
   }
 }  //切图专用混凝土
@@ -37,6 +38,19 @@ $randomColorlNum:1,2,3,4,5,6,7,8,9,0;  //随机颜色等级
   }
 
 } //超过line行就隐藏
+@for $num from 1 through $fontSizeLevel{
+  .font#{$num} {
+    font-size:$num+px
+}
+} //增加font-size等级  例如font-25 则设置fontsize:25px
+body {
+  .float-left {
+    float: left;
+  }
+  .float-right {
+    float: right;
+  }
 
 
+}
 

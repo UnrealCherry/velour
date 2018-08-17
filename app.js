@@ -9,6 +9,9 @@ let utils = require("./utils")(app)
 let colors = require( "colors")
 let _global =require("./_global")() // 全局函数引入
 let mongodb = require('./mongodb') //必须使用异步函数 async成功后再执行回调
+let http = require('http').Server(app);  //http 地址
+let io = require('socket.io')(http);   //socket.io
+let socket =require('./socket')(io);
 const port=60000
 app.use(cookieParser());
 app.use(bodyParser.json()); // for parsing application/json
@@ -22,6 +25,7 @@ app.all('*', function(req, res, next) {
   next();
 }); //app全局过滤
 //腾讯动漫
+
 const QUEUE = [
   {
     name : "动漫之家",
@@ -37,7 +41,7 @@ async function severRuning () {
     utils.setPath(comicRouter.path)
   }
   // 启动服务
-  app.listen(port,function(err){
+  http.listen(port,function(err){
     if(err){
       console.error(err);
     }else {
