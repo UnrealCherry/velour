@@ -1,6 +1,6 @@
 <template>
 <div class="book-wrapper">
-<div v-for="book in books" :key="book.name" class="book-margin">
+<div v-for="book in books" :key="book.name" class="book-margin" @click="goBook">
   <div class="book-flex">
     <div class="cover" ><img :src="book.cover" ></div>
     <div class="contents">
@@ -55,8 +55,12 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    goBook () {
+      this.$router.push('/book')
+    }
   }
-
 }
 </script>
 <style lang="scss" scoped>

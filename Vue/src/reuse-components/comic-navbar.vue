@@ -12,7 +12,8 @@ export default {
   props: {
     icons_data: {type: Array, require: true},
     duration: {type: String, require: false, default: '0.3s cubic-bezier(1,.73,.31,1.36) '},
-    color_group: {type: Array, require: false}
+    color_group: {type: Array, require: false},
+    index: { type: Number, require: false, default: 0 }
   },
   data () {
     return {
@@ -27,16 +28,16 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.slider = this.$refs['comic-slider-parent'].getElementsByClassName('slider')[0]
-      let elesSelect = this.$refs['comic-slider-parent'].getElementsByClassName('vicon-wrapper')[0], index = 0, that = this
+      let elesSelect = this.$refs['comic-slider-parent'].getElementsByClassName('vicon-wrapper')[0]
       let webkit = ['transition', '-moz-transition', '-webkit-transition', '-o-transition']
       for (let CssName of webkit) {
         this.slider.style[CssName] = this.duration
       }
       this.tabnav.w = elesSelect.offsetWidth
       this.tabnav.h = elesSelect.offsetHeight
-      this.slider.style.width = elesSelect.offsetWidth + 'px'
-      this.slider.style.height = elesSelect.offsetHeight + 'px'
-      that.copySliderRun(index, that)
+      this.slider.style.width = this.tabnav.w + 'px'
+      this.slider.style.height = this.tabnav.h + 'px'
+      this.copySliderRun(this.index, this)
     })
   },
   methods: {

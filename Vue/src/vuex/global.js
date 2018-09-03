@@ -2,7 +2,8 @@ const vuexGlobal = {
   namespaced: true,
   state: {
     vuex_localStorage: 'localStorage',
-    viewHeight: 0
+    viewHeight: 0,
+    BScroll: 'better-scroll'
   },
   mutations: {
     setLocalStorage (state, obj) { //设置本地缓存
