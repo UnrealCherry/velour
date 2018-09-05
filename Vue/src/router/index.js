@@ -1,26 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages/Home'
-import Book from '@/pages/Book'
-import notFound from '@/pages/404'
-import search from '@/pages/search'
-import ChatRoom from '@/pages/ChatRoom'
+const Home = resolve => require(['@/pages/Home.vue'], resolve)
+const Book = resolve => require(['@/pages/Book.vue'], resolve)
+const NotFound = resolve => require(['@/pages/404.vue'], resolve)
+const Search = resolve => require(['@/pages/search.vue'], resolve)
+const Chatroom = resolve => require(['@/pages/ChatRoom.vue'], resolve)
+const Catalog = resolve => require(['@/pages/Catalog.vue'], resolve)
+const Child_Catalog_Directory = resolve => require(['@/pages/catalog-child/Directory.vue'], resolve)
+const Child_Catalog_Detail = resolve => require(['@/pages/catalog-child/Detail.vue'], resolve)
 Vue.use(Router)
-
-export default new Router({
+//命名规范:path全小写 component 首字母大写
+//XX的子目录为XX-child
+//XX的子文件OOO为Child_XXX_OOO
+const router = new Router({
   routes: [
     {
       path: '*',
-      component: notFound
+      component: NotFound
     },
     {
       path: '/',
-      name: 'search',
-      component: search
+      name: 'index',
+      component: Home
+    },
+    {
+      path: '/search',
+      name: '/',
+      component: Search
     },
     {
       path: '/home',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
@@ -31,7 +41,23 @@ export default new Router({
     {
       path: '/chatroom',
       name: 'chatroom',
-      component: ChatRoom
+      component: Chatroom
+    },
+    {
+      path: '/catalog',
+      name: 'catalog',
+      component: Catalog,
+      children: [
+        {
+          path: 'directory',
+          component: Child_Catalog_Directory
+        },
+        {
+          path: 'profile',
+          component: Child_Catalog_Detail
+        }
+      ]
     }
   ]
 })
+export default router

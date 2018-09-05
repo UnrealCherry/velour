@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     goBook () {
-      this.$router.push('/book')
+      this.$router.push('/catalog/directory')
     }
   }
 }

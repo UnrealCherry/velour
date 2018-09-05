@@ -16,7 +16,7 @@ const vuexGlobal = {
     },
     setValue (state, obj) {
       state[obj.key] = obj.val
-      console.log('******vuex:' + obj.key + '设置了:' + obj.val + '*******')
+      console.log('******vuex:' + obj.key + 'set:' + obj.val + ' is success*******')
     }
   },
   getters: {

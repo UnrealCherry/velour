@@ -4,6 +4,8 @@ $randomColorlLevel:100;  //随机颜色等级
 $fontSizeLevel:50; //font-size 等级
 @mixin  setIcon($element-name,$width) {
    .icon-#{$element-name} {
+     display: inline-block;
+     vertical-align: middle;
      width: $width;
      height: $width;
      background: url(($icon-address)+($element-name)+'.svg') no-repeat center center;

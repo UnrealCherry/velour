@@ -48,3 +48,8 @@
 * 0.增加charRoom.vue(最近好忙)
 * 1.增加nuxt
 * 2.修复小bug
+### 版本0.1.0
+* 0.增加catalog.vue
+* 1.增加导航栏逻辑
+* 2.main.js增加刷新 随机颜色 getStyle函数
+* 3.异步加载router.vue 提高加载速度

@@ -1,12 +1,16 @@
 <template>
   <div id="app">
     <div>
-    <div id="flow-wrap" :style="{'height':viewHeight+'px'}">
+    <div id="flow-wrap" :style="{'height':viewHeight}">
       <transition name="fade" >
-    <router-view/>
+        <keep-alive>
+    <router-view />
+        </keep-alive>
       </transition>
     </div>
-    <comic-navbar :icons_data="icons_data" :color_group="color_group" ></comic-navbar><!--底部tab-->
+      <transition name="fadeDown" >
+    <comic-navbar :icons_data="icons_data" :color_group="color_group" :index="tabIndex" v-if="tabShow" ></comic-navbar><!--底部tab-->
+      </transition>
     </div>
     </div>
 </template>
@@ -18,6 +22,7 @@ import BScroll from 'better-scroll'
 export default {
   name: 'App',
   created () {
+
   },
   mounted () {
     this.init()
@@ -26,6 +31,8 @@ export default {
   watch: {
     $route (to, from) {
       this.betterScrollGolbalInit()
+      this.setTabShow(to)
+      this.setTabIndex(to, this)
       console.log('改变路由辣')
     }
   },
@@ -36,6 +43,9 @@ export default {
   data () {
     return {
       BScroll: '',
+      tabShow: true,
+      tabIndex: 0,
+      height: 0,
       color_group: ['#F9B3C9', '#EF8AAE', '#E20380', '#AF007B', '#6E097D', '#EB9D00', '#E95722', '#DB0129', '#019F61', '#02B1AF', '#4A1377'],
       icons_data: [ {name: '首页',
         url: '/home',
@@ -72,7 +82,20 @@ export default {
       let d = document
       let navbar = d.getElementById('ComicNavbar').offsetHeight
       let client = d.documentElement.clientHeight
-      this.$store.commit('setValue', {key: 'viewHeight', val: client - navbar})
+      this.height = client - navbar
+      this.$store.commit('setValue', { key: 'viewHeight', val: this.height + 'px' })
+    },
+    setTabShow (to) {
+      /*是路由导航的时候隐藏并且设定高度*/
+      if (to.name === 'home' || to.name === 'index' || to.name === 'book' || to.name === 'chatroom') { this.tabShow = true; this.$store.commit('setValue', { key: 'viewHeight', val: this.height + 'px' }) } else { this.tabShow = false; this.$store.commit('setValue', {key: 'viewHeight', val: '100vh'}) }
+    },
+    setTabIndex (to, that) {
+      this.icons_data.forEach((x, i, a) => {
+        let name = x.url.replace('/', '')
+        if (name === to.name) {
+          that.tabIndex = i
+        }
+      })
     }
   },
   components: {
@@ -88,6 +111,13 @@ export default {
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     transform:translateX(-100vw) ;
+    opacity: 0;
+  }
+  .fadeDown-enter-active, .fadeDown-leave-active {
+    transition:  0.35s ;
+  }
+  .fadeDown-enter, .fadeDown-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform:translateY(10vw) ;
     opacity: 0;
   }
   #flow-wrap{

@@ -25,6 +25,9 @@ export default {
       iconRouter_index: 0
     }
   },
+  watch: {
+    index () { this.copySliderRun(this.index, this) }
+  },
   mounted () {
     this.$nextTick(() => {
       this.slider = this.$refs['comic-slider-parent'].getElementsByClassName('slider')[0]
