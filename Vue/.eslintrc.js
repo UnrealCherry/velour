@@ -28,6 +28,7 @@ module.exports = {
     'spaced-comment':'off',
     'no-new':'off',
     'camelcase':'off',
+  /*  'no-trailing-spaces':'off',*/
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }

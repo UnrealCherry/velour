@@ -1,3 +1,4 @@
+'use strict'
 import '@/assets/reset.css'
 import '@/assets/common/global.scss'
 import '@/assets/swiper.css'
@@ -16,6 +17,12 @@ FastClick.attach(document.body)
 Vue.use(Vuex)
 Vue.use(MintUI)
 Vue.config.productionTip = false
+window.requestAnimFrame = (function () {
+  return window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+        function (callback) { window.setTimeout(callback, 6000 / 60) }
+}())
 Vue.prototype.$axios = axios
 Vue.prototype.$typeOf = (string) => {
   let type = Object.prototype.toString.call(string)
@@ -30,10 +37,10 @@ Vue.prototype.$typeOf = (string) => {
 Vue.prototype.$getStyle = (element, val) => {
   return window.getComputedStyle(element, null)[val]
 } //获得样式
-Vue.prototype.$randomColor = (opacity, obj) => {
-  let r = obj.r ? obj.r : Math.floor(Math.random() * 256)
-  let g = obj.g ? obj.g : Math.floor(Math.random() * 256)
-  let b = obj.b ? obj.b : Math.floor(Math.random() * 256)
+Vue.prototype.$randomColor = (opacity, color) => {
+  let r = color ? color.r : Math.floor(Math.random() * 256)
+  let g = color ? color.g : Math.floor(Math.random() * 256)
+  let b = color ? color.b : Math.floor(Math.random() * 256)
   let o = opacity ? 1 : parseInt(Math.random() * 100) / 100
   return 'rgba(' + r + ',' + g + ',' + b + ',' + o + ')'
 } //随机颜色

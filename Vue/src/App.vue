@@ -42,7 +42,7 @@ export default {
   },
   data () {
     return {
-      BScroll: '',
+      BScroll: false,
       tabShow: true,
       tabIndex: 0,
       height: 0,
@@ -68,10 +68,16 @@ export default {
   },
   methods: {
     betterScrollGolbalInit () {
-      let faceTransitionTime = 400, that = this
+      let faceTransitionTime = 400, that = this, routerName = this.$route.name
       this.$nextTick(() => {
         setTimeout(function () {
-          that.BScroll = null
+          if (that.BScroll) {
+            that.BScroll.destroy()
+            that.BScroll = false
+          }
+          if (routerName === 'chatroom') {
+            return false
+          }
           that.BScroll = new BScroll('#flow-wrap', {
             click: false
           })
@@ -83,13 +89,14 @@ export default {
       let navbar = d.getElementById('ComicNavbar').offsetHeight
       let client = d.documentElement.clientHeight
       this.height = client - navbar
-      this.$store.commit('setValue', { key: 'viewHeight', val: this.height + 'px' })
+      this.$store.commit('setValue', {  'viewHeight': this.height + 'px' })
     },
     setTabShow (to) {
       /*是路由导航的时候隐藏并且设定高度*/
-      if (to.name === 'home' || to.name === 'index' || to.name === 'book' || to.name === 'chatroom') { this.tabShow = true; this.$store.commit('setValue', { key: 'viewHeight', val: this.height + 'px' }) } else { this.tabShow = false; this.$store.commit('setValue', {key: 'viewHeight', val: '100vh'}) }
+      if (to.name === 'home' || to.name === 'index' || to.name === 'book' || to.name === 'chatroom') { this.tabShow = true;      this.$store.commit('setValue', {  'viewHeight': this.height + 'px' }) } else { this.tabShow = false; this.$store.commit('setValue', {  'viewHeight': '100vh' }) }
     },
     setTabIndex (to, that) {
+      /*根据url和路由名字底部导航状态*/
       this.icons_data.forEach((x, i, a) => {
         let name = x.url.replace('/', '')
         if (name === to.name) {

@@ -90,6 +90,7 @@ export default {}
       .between{
         display: flex;
         justify-content: space-between;
+        margin-bottom: 20px;
         .opc{
           opacity: 0.65;
           line-height: 60px;

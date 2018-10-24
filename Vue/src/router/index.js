@@ -6,8 +6,10 @@ const NotFound = resolve => require(['@/pages/404.vue'], resolve)
 const Search = resolve => require(['@/pages/search.vue'], resolve)
 const Chatroom = resolve => require(['@/pages/ChatRoom.vue'], resolve)
 const Catalog = resolve => require(['@/pages/Catalog.vue'], resolve)
+const Tetris = resolve => require(['@/pages/Game/tetris.vue'], resolve)
 const Child_Catalog_Directory = resolve => require(['@/pages/catalog-child/Directory.vue'], resolve)
 const Child_Catalog_Detail = resolve => require(['@/pages/catalog-child/Detail.vue'], resolve)
+const Reader_aesReader = resolve => require(['@/pages/Reader/aesReader.vue'], resolve)
 Vue.use(Router)
 //命名规范:path全小写 component 首字母大写
 //XX的子目录为XX-child
@@ -17,6 +19,11 @@ const router = new Router({
     {
       path: '*',
       component: NotFound
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: Tetris
     },
     {
       path: '/',
@@ -57,6 +64,11 @@ const router = new Router({
           component: Child_Catalog_Detail
         }
       ]
+    },
+    {
+      path: '/reader',
+      name: 'name',
+      component: Reader_aesReader
     }
   ]
 })

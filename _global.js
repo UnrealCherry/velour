@@ -1,3 +1,25 @@
+
+const crypto = require('crypto');
+const fs =require('fs')
+function aesEncrypt(data, key) {
+    const cipher = crypto.createCipher('aes192', key)
+    let crypted = cipher.update(data, 'utf8', 'hex')
+    crypted += cipher.final('hex')
+    return crypted
+}  //加密
+function aesDecrypt(encrypted, key) {
+    const decipher = crypto.createDecipher('aes192', key)
+    var decrypted = decipher.update(encrypted, 'hex', 'utf8')
+    decrypted += decipher.final('utf8')
+    return decrypted
+        } //解密
+let key = 'isee'
+//加密后保存到文件夹
+/*const data = ''
+let encrypted = aesEncrypt(data, key)
+fs.writeFileSync('keys.gs', encrypted);*/
+let cookies =aesDecrypt(fs.readFileSync('keys.gs','utf-8'),key)  //如果文件不存在就会报错
+//读取秘钥
 let _global =function (express) {
   //全局方法进入开始执行
   let globalMethods ={
@@ -53,7 +75,8 @@ global.mongodb={
 }
   //pulessrity的全局方法
   global[global.ourkeys.pulessrity]={
-  getAllRouterName :function WhatIsNameInThisFunction(routerArray) {
+   myCookies:'',
+   getAllRouterName :function WhatIsNameInThisFunction(routerArray) {
     let word_arr = ['router.get(','router.post(']
     let fnToString = routerArray + ''
     let obj ={}
@@ -75,7 +98,7 @@ global.mongodb={
    routerInThere: function (fn) {
       fn()
      return fn+''
-   }
+   },
 }
 }
 

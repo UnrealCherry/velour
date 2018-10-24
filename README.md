@@ -53,3 +53,11 @@
 * 1.增加导航栏逻辑
 * 2.main.js增加刷新 随机颜色 getStyle函数
 * 3.异步加载router.vue 提高加载速度
+### 版本0.1.5
+* 0.成功破解腾讯漫画规则
+* 1.默认清除路由缓存
+* 2.增加秘钥用于保存私用cookie
+* 3.增加font-awesome,icon.css
+* 4.增加requestAnimFrame 动画指令
+* 5.增加nodemon 自动重启node app
+* 6.增加Reader,option页面,以及对应的mock

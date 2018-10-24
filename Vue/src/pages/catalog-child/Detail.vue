@@ -1,7 +1,8 @@
 <template>
     <div>
-      <button></button>
-
+      <router-link to="/catalog/profile">
+        <mt-button type="default">default</mt-button>
+      </router-link>
     </div>
 </template>
 <script>
