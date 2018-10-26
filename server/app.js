@@ -11,8 +11,13 @@ let _global =require("./_global")() // 全局函数引入
 let mongodb = require('./mongodb') //必须使用异步函数 async成功后再执行回调
 let http = require('http').Server(app);  //http 地址
 let io = require('socket.io')(http);   //socket.io
-let socket =require('./socket')(io);
+let socket =require('./socket');
+socket(io)//执行socket,在socket里执行js
 const port=60000
+app.use('/',function (req,res,next) {
+    res.send('成功')
+    next()
+})
 app.use(cookieParser());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }))// for parsing application/x-www-form-urlencoded

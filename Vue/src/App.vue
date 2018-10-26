@@ -33,7 +33,7 @@ export default {
       this.betterScrollGolbalInit()
       this.setTabShow(to)
       this.setTabIndex(to, this)
-      console.log('改变路由辣')
+      console.log(to, '改变路由辣')
     }
   },
   computed: {
@@ -46,6 +46,7 @@ export default {
       tabShow: true,
       tabIndex: 0,
       height: 0,
+      navHeight: 0,
       color_group: ['#F9B3C9', '#EF8AAE', '#E20380', '#AF007B', '#6E097D', '#EB9D00', '#E95722', '#DB0129', '#019F61', '#02B1AF', '#4A1377'],
       icons_data: [ {name: '首页',
         url: '/home',
@@ -63,7 +64,8 @@ export default {
         url: '/user',
         svgName: 'icon-shenfenzheng'
       }
-      ]
+      ],
+      showTabName: ['home', 'index']
     }
   },
   methods: {
@@ -88,12 +90,20 @@ export default {
       let d = document
       let navbar = d.getElementById('ComicNavbar').offsetHeight
       let client = d.documentElement.clientHeight
+      this.navHeight = navbar
       this.height = client - navbar
-      this.$store.commit('setValue', {  'viewHeight': this.height + 'px' })
+      this.$store.commit('setValue', { 'viewHeight': this.height + 'px' })
     },
     setTabShow (to) {
       /*是路由导航的时候隐藏并且设定高度*/
-      if (to.name === 'home' || to.name === 'index' || to.name === 'book' || to.name === 'chatroom') { this.tabShow = true;      this.$store.commit('setValue', {  'viewHeight': this.height + 'px' }) } else { this.tabShow = false; this.$store.commit('setValue', {  'viewHeight': '100vh' }) }
+      for (let tabName of this.showTabName) {
+        if (tabName === to.name) {
+          this.tabShow = true
+          this.$store.commit('setValue', { 'viewHeight': this.height + 'px' })
+          return false
+        }
+      }
+      this.tabShow = false; this.$store.commit('setValue', { 'viewHeight': this.height + this.navHeight + 'px' })
     },
     setTabIndex (to, that) {
       /*根据url和路由名字底部导航状态*/
@@ -113,6 +123,8 @@ export default {
 
 <style lang="less" scoped>
 #app {
+  width: 750px;
+  margin: 0 auto;
   .fade-enter-active, .fade-leave-active {
     transition:  0.35s ;
   }

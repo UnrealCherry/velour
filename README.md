@@ -61,3 +61,8 @@
 * 4.增加requestAnimFrame 动画指令
 * 5.增加nodemon 自动重启node app
 * 6.增加Reader,option页面,以及对应的mock
+### 版本0.1.6
+* 0.将服务器目录转移到server文件夹
+* 1.vue global里增加了新属性 方便调试本地scoket
+* 2.小聊天室已初步搭建成功
+* 3.优化部分函数 使阅读起来不那么复杂

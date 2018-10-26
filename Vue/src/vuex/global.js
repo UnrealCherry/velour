@@ -16,13 +16,12 @@ const vuexGlobal = {
       return state.vuex_localStorage
     },
     setValue (state, obj) {
-      for(let key in obj){
-        console.log(state[key])
-        if(state[key]!=undefined){
-          state[key]=obj[key]
+      for (let key in obj) {
+        if (state[key] !== undefined) {
+          state[key] = obj[key]
           console.log('******vuex:' + key + 'set:' + obj[key] + ' is success*******')
-        }else{
-          console.log('vuex没设置'+key+'这个值')
+        } else {
+          console.log('vuex没设置' + key + '这个值')
         }
       }
     }

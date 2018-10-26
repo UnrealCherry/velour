@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Home = resolve => require(['@/pages/Home.vue'], resolve)
-const Book = resolve => require(['@/pages/Book.vue'], resolve)
+const Book = resolve => require(['@/pages/Reader/aesReader.vue'], resolve)
 const NotFound = resolve => require(['@/pages/404.vue'], resolve)
 const Search = resolve => require(['@/pages/search.vue'], resolve)
 const Chatroom = resolve => require(['@/pages/ChatRoom.vue'], resolve)

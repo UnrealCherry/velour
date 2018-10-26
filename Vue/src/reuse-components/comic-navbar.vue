@@ -75,12 +75,11 @@ export default {
 <style lang="scss"  >
   #ComicNavbar{
     background: white;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     display: flex;
     align-items:center;/*垂直居中*/
     justify-content: center;/*水平居中*/
+    max-width: 1200px;
     .x-vion{
       font-size: 38px;
     }

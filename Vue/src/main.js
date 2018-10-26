@@ -23,7 +23,16 @@ window.requestAnimFrame = (function () {
           window.mozRequestAnimationFrame ||
         function (callback) { window.setTimeout(callback, 6000 / 60) }
 }())
+const store = new Vuex.Store(VuexStore)
+let vm = new Vue({
+  created () { },
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
 Vue.prototype.$axios = axios
+//判断类型
 Vue.prototype.$typeOf = (string) => {
   let type = Object.prototype.toString.call(string)
   if (type === '[object Object]') { return 'object' }
@@ -33,29 +42,28 @@ Vue.prototype.$typeOf = (string) => {
   if (type === '[object Number]') { return 'number' }
   if (type === '[object String]') { return 'string' }
   if (type === '[object Symbol]') { return 'symbol' }
-} //判断类型
+}
+//获得样式
 Vue.prototype.$getStyle = (element, val) => {
   return window.getComputedStyle(element, null)[val]
-} //获得样式
+}
+//随机颜色
 Vue.prototype.$randomColor = (opacity, color) => {
   let r = color ? color.r : Math.floor(Math.random() * 256)
   let g = color ? color.g : Math.floor(Math.random() * 256)
   let b = color ? color.b : Math.floor(Math.random() * 256)
   let o = opacity ? 1 : parseInt(Math.random() * 100) / 100
   return 'rgba(' + r + ',' + g + ',' + b + ',' + o + ')'
-} //随机颜色
+}
+//刷新组件
 Vue.prototype.$Refresh = (RefreshKey, time, that) => {
   that[RefreshKey] = false
   setTimeout(() => {
     that[RefreshKey] = true
     console.log('Refresh :' + RefreshKey + 'is success')
   }, time)
-} //组件刷新
-const store = new Vuex.Store(VuexStore)
-new Vue({
-  created () { },
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
+}
+//路由导航
+Vue.prototype.$goBack = (num) => {
+  vm.$router.go(num)
+}

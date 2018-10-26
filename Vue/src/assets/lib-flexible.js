@@ -69,9 +69,9 @@
   function refreshRem(){
     var width = docEl.getBoundingClientRect().width;
     //自定义
-/*    if (width / dpr > 540) {
+    if (width / dpr > 540) {
       width = 540 * dpr;
-    }*/
+    }
     var rem = width / 10;
     docEl.style.fontSize = rem + 'px';
     flexible.rem = win.rem = rem;

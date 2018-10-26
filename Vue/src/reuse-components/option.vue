@@ -2,11 +2,11 @@
     <div id="reader-option">
       <div class="container">
         <!--标题-->
-        <div class="top">1</div>
+        <div class="top"><span @click="$goBack(-1)"><i class="fa fa-arrow-left"></i></span>{{pages_data.cunrrentIndex +1}}</div>
         <!--中间部分-->
         <div class="middle" @click.stop="middleControl($event)">
           <transition name="fadeLeft" >
-          <div class="catalog" v-show="show_catalog">
+          <div class="catalog" v-show="show_catalog" :style="{height:catalogHeight }">
             <mt-button v-for=" (c, index) in catalog" :key="index" class="page">{{c.chapter}}</mt-button>
          <!--   <mt-button class="close"><i class="fa fa-times">关闭</i></mt-button>-->
           </div>
@@ -25,9 +25,9 @@
         <!--进度条-->
         <transition name="fadeUp" >
           <div class="range" v-show="!show_buttom">
-            <mt-range v-model="rangeValue" style="width: 100%">
-              <div slot="start">0</div>
-              <div slot="end">100</div>
+            <mt-range v-model="rangeValue" style="width: 100%"  :max="pages_data.maxSize">
+              <div slot="start">1</div>
+              <div slot="end">{{pages_data.maxSize}}</div>
             </mt-range>
           </div>
         </transition>
@@ -39,19 +39,27 @@ export default {
   props: {
     catalog_data: {
       type: Object
+    },
+    pages_data: {
+      type: Object
     }
-
+  },
+  watch: {
+    rangeValue (val) {
+      this.$emit('optionEvent', {jumpIndex: val})
+    }
   },
   mounted () {
+    this.catalogHeight = document.getElementsByClassName('middle')[0].offsetHeight + 'px' //设定页面高
     this.catalog = this.catalog_data.data.chapterList
-    console.log(this.catalog_data)
   },
   data () {
     return {
       catalog: [],
       show_catalog: false,
-      rangeValue:1,
-      show_buttom:true
+      rangeValue: 0,
+      show_buttom: true,
+      catalogHeight: 0
     }
   },
   methods: {
@@ -68,7 +76,7 @@ export default {
     openCatalog () {
       this.show_catalog = !this.show_catalog
     },
-    collect (){
+    collect () {
 
     },
     progress_s (ev) { this.show_buttom = !this.show_buttom }
@@ -109,8 +117,12 @@ export default {
     width: 100%;
     opacity: 0;
   }
-
-
+  .top{
+    display: flex;
+    justify-content:space-between;
+    padding: 0 20px;
+    background: #0a0c12;
+  }
   .range{
     height: 150px;
     line-height: 150px;
@@ -135,7 +147,6 @@ export default {
 /*     background: rgba(65, 105, 225, 0.21);*/
      .catalog{
        width: 80vw;
-       height: 85vh;
        overflow-y: scroll;
        background: #fefffe;
        .close{

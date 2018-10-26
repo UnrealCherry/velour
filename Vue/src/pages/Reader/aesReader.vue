@@ -1,7 +1,7 @@
 <template>
     <div id="reader" @click="openOption($event)">
       <transition name="fade">
-      <voption :catalog_data="catalog"  v-show=" $store.state.open_option"/>
+      <voption :catalog_data="catalog" :pages_data="pages" v-show=" $store.state.open_option"  @optionEvent="everyEv"/>
       </transition>
         <div class="swiper-container swiper-container-horizontal swiper-container-ios">
         <div class="swiper-wrapper" >
@@ -32,6 +32,7 @@ export default {
         let img = new Image()
         let src = vnode.context.imagesArray[el.getAttribute('index')] + '?r=' + Math.random()
         img.src = src
+        console.log(src)
         img.onload = function () {
           el.src = src
           console.log('onload')
@@ -41,7 +42,7 @@ export default {
           let btn = document.createElement('button')
           btn.style.cssText = 'z-index: 99999;background: rgb(254, 254, 254);display: block;border: 1px #ccc solid;' +
             'padding: 10px;border-radius: 5px;'
-          btn.innerHTML = '重新加载'
+          btn.innerHTML = '加载失败,需要重新加载啦'
           el.parentNode.appendChild(btn)
           function run (ev) {
             ev.target.style.display = 'none'
@@ -72,33 +73,49 @@ export default {
       this.$store.commit('setValue', {
         open_option: true
       })
+    },
+    everyEv (obj) {
+      this.swiperInstance.slideTo(obj.jumpIndex, 1000, false) //滚动条跳转
     }
   },
-  beforeCreate () {
+  created () {
     let that = this
-    that.imagesArray = []
-    for (let w of mock.data.picture) {
-      that.imagesArray.push(w.url)
-    }
+    setTimeout(function () {
+      that.imagesArray = []
+      for (let w of mock.data.picture) {
+        that.imagesArray.push(w.url)
+      }
+      that.pages.maxSize = that.imagesArray.length
+    }, 0) //模拟ajax
     this.catalog = catalog
   },
   mounted () {
+    let that = this
     this.$nextTick(function () {
       this.swiperInstance = new Swiper('.swiper-container', {
         pagination: {
           el: '.swiper-pagination',
           type: 'progressbar',
           progressbarOpposite: false
+        },
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        on: {
+          slideChange: function () { that.pages.cunrrentIndex = this.activeIndex }
         }
       })
     })
   },
   data () {
     return {
-      imagesArray: [ 'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-670272.png', 2, 3, 4, 5, 6, 7, 8, 91, 10 ],
+      imagesArray: [ ],
       swiperInstance: null,
       loading: loading,
-      catalog: catalog
+      catalog: catalog,
+      pages: {
+        maxSize: 0,
+        cunrrentIndex: 0
+      }
     }
   }
 }
