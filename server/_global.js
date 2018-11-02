@@ -102,5 +102,4 @@ global.mongodb={
    },
 }
 }
-
 module.exports = _global
