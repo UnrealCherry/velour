@@ -122,8 +122,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  html,body{
+    height: 667px;
+    width: 750px;
+    overflow-y: scroll;
+  }
 #app {
   width: 750px;
+  height: 667px;
   margin: 0 auto;
   .fade-enter-active, .fade-leave-active {
     transition:  0.35s ;

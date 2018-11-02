@@ -9,6 +9,7 @@ import Vuex from 'vuex'
 import App from './App'
 //自定义lib-flexible
 import '@/assets/lib-flexible'
+import {VueDir} from './directive'
 import router from './router'
 import axios from 'axios'
 import VuexStore from '@/vuex/global'
@@ -16,6 +17,7 @@ const FastClick = require('fastclick')
 FastClick.attach(document.body)
 Vue.use(Vuex)
 Vue.use(MintUI)
+VueDir(Vue)
 Vue.config.productionTip = false
 window.requestAnimFrame = (function () {
   return window.requestAnimationFrame ||

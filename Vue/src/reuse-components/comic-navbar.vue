@@ -22,7 +22,8 @@ export default {
         w: 0,
         h: 0
       },
-      iconRouter_index: 0
+      iconRouter_index: 0,
+      lumpOffset: 0
     }
   },
   watch: {
@@ -31,6 +32,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.slider = this.$refs['comic-slider-parent'].getElementsByClassName('slider')[0]
+      this.lumpOffset = document.getElementById('app').offsetLeft
       let elesSelect = this.$refs['comic-slider-parent'].getElementsByClassName('vicon-wrapper')[0]
       let webkit = ['transition', '-moz-transition', '-webkit-transition', '-o-transition']
       for (let CssName of webkit) {
@@ -56,7 +58,7 @@ export default {
       if (!that.slider) {
         return false
       }
-      that.slider.style.left = (this.tabnav.w * index) + 'px'
+      that.slider.style.left = this.lumpOffset + (this.tabnav.w * index) + 'px'
       that.slider.innerHTML = `<div  class="vicon-wrapper vicon-wrapper-active x-vion">
                                         <div class="icon-f  iconfont  ${that.icons_data[index].svgName}"></div>
                                          <div >${that.icons_data[index].name}</div></div>`
@@ -75,11 +77,10 @@ export default {
 <style lang="scss"  >
   #ComicNavbar{
     background: white;
-    width: 100%;
+    width: 750px;
     display: flex;
     align-items:center;/*垂直居中*/
     justify-content: center;/*水平居中*/
-    max-width: 1200px;
     .x-vion{
       font-size: 38px;
     }

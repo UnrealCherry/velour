@@ -133,6 +133,9 @@ let routerArray=pulessrityGlobalMethods.routerInThere(function Router_Writing_Th
       })
   })
   router.get('/text',(req,res,next)=>{
+      var  q = schema.a({name:'fffff',kill:"false"})
+      q.save()
+      q.
       res.send("3434")
   })
 })

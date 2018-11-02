@@ -4,7 +4,7 @@
         <!--标题-->
         <div class="top"><span @click="$goBack(-1)"><i class="fa fa-arrow-left"></i></span>{{pages_data.cunrrentIndex +1}}</div>
         <!--中间部分-->
-        <div class="middle" @click.stop="middleControl($event)">
+        <div class="middle" @click.stop="middleControl($event)" ref='middle' v-swipeleft="swiperL" v-swiperight="swiperR">
           <transition name="fadeLeft" >
           <div class="catalog" v-show="show_catalog" :style="{height:catalogHeight }">
             <mt-button v-for=" (c, index) in catalog" :key="index" class="page">{{c.chapter}}</mt-button>
@@ -46,11 +46,17 @@ export default {
   },
   watch: {
     rangeValue (val) {
+      if (this.rangeValue < 0) {
+        this.rangeValue = 0
+      }
+      if (this.rangeValue > this.pages_data.maxSize - 1) {
+        this.rangeValue = this.pages_data.maxSize - 1
+      }
       this.$emit('optionEvent', {jumpIndex: val})
     }
   },
   mounted () {
-    this.catalogHeight = document.getElementsByClassName('middle')[0].offsetHeight + 'px' //设定页面高
+    this.catalogHeight = this.$refs.middle.offsetHeight + 'px' //设定页面高
     this.catalog = this.catalog_data.data.chapterList
   },
   data () {
@@ -79,7 +85,13 @@ export default {
     collect () {
 
     },
-    progress_s (ev) { this.show_buttom = !this.show_buttom }
+    progress_s (ev) { this.show_buttom = !this.show_buttom },
+    swiperL () {
+      this.rangeValue++
+    },
+    swiperR () {
+      this.rangeValue--
+    }
   }
 }
 </script>
@@ -178,7 +190,7 @@ export default {
      height: 150px;
      line-height: 100px;
      display: flex;
-     justify-content:center;
+     justify-content:left;
      background: #18081e;
      div{
        width: 150px;

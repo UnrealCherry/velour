@@ -12,7 +12,8 @@ function  createSchema(name,obj) {
 }  //创建数据库用的方法
   //数据库collection写这里
 createSchema('a',{
-  name:'String'
+  name:String,
+  kill:Boolean
 })
 createSchema('b',{
   name1:'String'

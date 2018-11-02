@@ -29,10 +29,10 @@ export default {
     insertImages: {
       // 指令的定义
       inserted: function (el, binding, vnode) {
+        // 配合this.loadding和this.imagesArray
         let img = new Image()
         let src = vnode.context.imagesArray[el.getAttribute('index')] + '?r=' + Math.random()
         img.src = src
-        console.log(src)
         img.onload = function () {
           el.src = src
           console.log('onload')
@@ -62,7 +62,7 @@ export default {
               }
             }, 2000)
           }
-          btn.onclick = run
+          btn.addEventListener('click', run, false)
           console.log('error')
         }
       }
@@ -75,7 +75,7 @@ export default {
       })
     },
     everyEv (obj) {
-      this.swiperInstance.slideTo(obj.jumpIndex, 1000, false) //滚动条跳转
+      this.swiperInstance.slideTo(obj.jumpIndex, 500, false) //滚动条跳转
     }
   },
   created () {
@@ -136,7 +136,6 @@ export default {
       text-align: center;
       font-size: 18px;
       background: #353732;
-
       /* Center slide text vertically */
       display: -webkit-box;
       display: -ms-flexbox;
@@ -151,7 +150,7 @@ export default {
       -webkit-align-items: center;
       align-items: center;
       img {
-        width: 100%;
+        height: calc(100% - (100px));
         object-fit: cover;
       }
     }

@@ -1,6 +1,7 @@
 
 const crypto = require('crypto');
 const fs =require('fs')
+const colors = require( "colors")
 function aesEncrypt(data, key) {
     const cipher = crypto.createCipher('aes192', key)
     let crypted = cipher.update(data, 'utf8', 'hex')
@@ -101,9 +102,5 @@ global.mongodb={
    },
 }
 }
-
-
-
-
 
 module.exports = _global

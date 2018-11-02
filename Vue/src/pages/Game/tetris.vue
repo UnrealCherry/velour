@@ -50,6 +50,7 @@ export default {
         'bottom': bottom
       }
     },
+    //优化动画函数
     run (count, div, peak) {
       let code = null
       let side = this.lumpSide

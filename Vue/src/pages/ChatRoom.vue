@@ -33,6 +33,7 @@ import { server } from '../../_globalOptions.js'
 export default {
   created () {
     this.betterScrollGolbalInit()
+    console.log(server)
     this.socket = io(server)
     this.socketIoInit(this.socket)
   },
@@ -195,14 +196,16 @@ background: #F5F5F5;
     justify-content:space-between;
     position: absolute;
     top:0;
+    width:750px;
     z-index: 999;
+  background: #0A0A0A;height: 80px;line-height: 80px;
     .left{
     margin-left: 20px;
     }
     .right{
       margin-right: 20px;
     }
-    background: #0A0A0A;height: 80px;line-height: 80px;width: 100%}
+    }
   .room{
     padding: 0 20px;
     padding-top: 80px;
