@@ -1,6 +1,6 @@
 # Velour
 #### (战胜腾讯动漫让大家一起看免费漫画的夙愿正在进行中...)
-![](https://github.com/pulessrity/velour/blob/master/assets/logo.jpg?raw=true)
+![](https://github.com/pulessrity/velour/blob/master/server/assets/logo.jpg?raw=true)
 ## 更新日志
 ### 版本0.0.1 (项目必须安装[mongodb4.0](https://www.mongodb.com/download-center?jmp=nav#community)能跑起来,推荐[Robo3T](https://robomongo.org/)可视化mongodb应用)
 * 1.Vue为前端项目
